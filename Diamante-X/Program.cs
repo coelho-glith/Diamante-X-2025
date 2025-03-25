@@ -1,11 +1,23 @@
-﻿namespace Diamante_X
+﻿using System.Reflection.Metadata.Ecma335;
+
+namespace Diamante_X
 {
     internal class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Escreva um número impar: ");
-            int tamanho = Convert.ToInt32(Console.ReadLine());
+            if (!int.TryParse(Console.ReadLine(), out int tamanho))
+            {
+                Console.WriteLine("Número Inteiro Invalido, Pressione novamente para continuar");
+                Console.ReadLine();
+            }
+            
+            if (tamanho % 2 == 0)
+            {
+                Console.WriteLine("Número informado não é ímpar. Pressione novamente para continuar");
+                Console.ReadLine();
+            }
 
             int meio = tamanho / 2;
 
